@@ -10,9 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["fred.schoeneman@gmail.com"]
 
   spec.summary       = %q{Opinionated Rails testing suite.}
-  spec.description   = %q{Opinionated Rails testing suite., implicitly requires
-    necessary gems and allows developers to set up necessary config files for
-    same.}
+  spec.description   = %q{Opinionated Rails testing suite. Specifies necessary
+    gems as dependencies and allows generation of test_helper.rb and Guardfile.}
   spec.homepage      = "https://github.com/schadenfred/handsome_fencer-test"
   spec.license       = "MIT"
 
@@ -27,7 +26,11 @@ Gem::Specification.new do |spec|
 
   # dependencies
 
-  spec.add_dependency "minitest"
+  spec.add_dependency "minitest-given"
+  spec.add_dependency "minitest-rails"
+  spec.add_dependency "shoulda"
+  spec.add_dependency "shoulda-matchers"
+  spec.add_dependency "minitest-matchers_vaccine"
   spec.add_dependency "guard"
   spec.add_dependency "launchy"
   spec.add_dependency "guard-minitest"
