@@ -1,4 +1,5 @@
 require "handsome_fencer/test/version"
+require "handsome_fencer/test/railtie" if defined?(Rails)
 
 module HandsomeFencer
   module Test
