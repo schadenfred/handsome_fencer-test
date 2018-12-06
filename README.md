@@ -14,6 +14,6 @@ To either generate or over-write your test_helper.rb and Guardfile, use:
 
 ```sh
 
-thor handsome_fencer:test:install
+$ thor handsome_fencer:test:install
 
 ```
