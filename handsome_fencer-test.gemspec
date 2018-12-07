@@ -2,6 +2,8 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "handsome_fencer/test/version"
+require "handsome_fencer/test/install"
+# require "thor"
 
 Gem::Specification.new do |spec|
   spec.name          = "handsome_fencer-test"
@@ -26,6 +28,7 @@ Gem::Specification.new do |spec|
 
   # dependencies
 
+  spec.add_dependency "thor"
   spec.add_dependency "minitest-given"
   spec.add_dependency "minitest-rails"
   spec.add_dependency "shoulda"
@@ -36,7 +39,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "guard-minitest"
   spec.add_dependency "guard-livereload"
   spec.add_dependency "rack-livereload"
-  spec.add_dependency "thor"
 
   # development dependencies
   spec.add_development_dependency "bundler", "~> 1.17"

@@ -1,5 +1,5 @@
-module HandsomeFencer
-  module Test
-    class Railtie < Rails::Railtie
-  end
-end
+# module HandsomeFencer
+#   module Test
+#     # class Railtie < Rails::Railtie
+#   end
+# end
