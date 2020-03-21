@@ -138,10 +138,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.17)
+  bundler
   handsome_fencer-test!
-  minitest (~> 5.0)
-  rake (~> 10.0)
+  minitest
+  rake
 
 BUNDLED WITH
    1.17.3
