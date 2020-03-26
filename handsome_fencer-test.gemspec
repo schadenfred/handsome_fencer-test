@@ -28,20 +28,29 @@ Gem::Specification.new do |spec|
 
   # dependencies
 
-  spec.add_dependency "thor"
+  spec.add_dependency "apparition"
+  spec.add_dependency "better_errors"
+  spec.add_dependency "binding_of_caller"
+  spec.add_dependency "capybara"
+  spec.add_dependency "guard"
+  spec.add_dependency "guard-livereload"
+  spec.add_dependency "guard-minitest"
+  spec.add_dependency "rack-livereload"
+  spec.add_dependency "launchy"
+  spec.add_dependency "byebug"
+  spec.add_dependency "minitest"
   spec.add_dependency "minitest-given"
   spec.add_dependency "minitest-rails"
-  spec.add_dependency "shoulda"
-  spec.add_dependency "shoulda-matchers"
   spec.add_dependency "minitest-matchers_vaccine"
-  spec.add_dependency "guard"
-  spec.add_dependency "launchy"
-  spec.add_dependency "guard-minitest"
-  spec.add_dependency "guard-livereload"
-  spec.add_dependency "rack-livereload"
+  spec.add_dependency "pry"
+  spec.add_dependency "selenium-webdriver"
+  spec.add_dependency "shoulda"
+  spec.add_dependency "shoulda-context", "2.0.0.rc2"
+  spec.add_dependency "shoulda-matchers", '~> 4.0'
+  spec.add_dependency "thor"
+
 
   # development dependencies
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
-  spec.add_development_dependency "minitest"
 end
