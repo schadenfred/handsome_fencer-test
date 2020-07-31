@@ -42,6 +42,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "minitest-given"
   spec.add_dependency "minitest-rails"
   spec.add_dependency "minitest-matchers_vaccine"
+  spec.add_dependency "mocha"
   spec.add_dependency "pry"
   spec.add_dependency "selenium-webdriver"
   spec.add_dependency "shoulda"
