@@ -1,0 +1,23 @@
+defaults: &defaults
+  working_directory: /tmp
+
+version: 2
+
+jobs:
+
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run: gem install roro
+      - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose build ruby_gem
+      - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose run ruby_gem rake test
+      - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose build ruby_gem
+      - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose run ruby_gem rake test
+      - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose build ruby_gem
+      - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose run ruby_gem rake test
+      - run: roro expose ci
+      - run: echo 'source roro/containers/gem/ci.env' >> $BASH_ENV
+      - run: setup_gem_credentials.sh
+      - run: gem install gem-release
+      - run: gem release

@@ -9,3 +9,4 @@
 
 roro/**/*.env
 roro/**/*.key
+Gemfile.lock
