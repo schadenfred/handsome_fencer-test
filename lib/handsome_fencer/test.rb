@@ -1,5 +1,5 @@
 require "handsome_fencer/test/version"
-require 'thor'
+# require 'thor'
 # require "handsome_fencer/test/thor/test"
 # require "lib/handsome_fencer/test/thor/test.thor"
 # require "thor"

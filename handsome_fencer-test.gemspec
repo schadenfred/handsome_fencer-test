@@ -29,8 +29,6 @@ Gem::Specification.new do |spec|
   # dependencies
 
   spec.add_dependency "apparition"
-  spec.add_dependency "better_errors"
-  spec.add_dependency "binding_of_caller"
   spec.add_dependency "capybara"
   spec.add_dependency "guard"
   spec.add_dependency "guard-livereload"
@@ -40,7 +38,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "byebug"
   spec.add_dependency "minitest"
   spec.add_dependency "minitest-given"
-  spec.add_dependency "minitest-rails"
   spec.add_dependency "minitest-matchers_vaccine"
   spec.add_dependency "mocha"
   spec.add_dependency "pry"
