@@ -1,5 +1,3 @@
-require 'thor'
-# require 'thor/dsl'
 module HandsomeFencer
 
   module Test
