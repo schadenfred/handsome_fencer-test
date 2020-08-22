@@ -42,7 +42,7 @@ workflows:
     
   build-release: 
     jobs: 
-      # - build
+      - build
       - pre_release:
           filters: 
             branches: 
