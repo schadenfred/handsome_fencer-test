@@ -39,7 +39,7 @@ jobs:
       - run: roro generate::exposed ci
       - run: echo 'source roro/containers/ruby_image/ci.env' >> $BASH_ENV
       - run: gem install gem-release
-      - run: "gem release -k key=RUBYGEMS_API_KEY"
+      - run: gem release -k key=$RUBYGEMS_API_KEY
       - run: "echo \"rubygems_api_key:: $RUBYGEMS_API_KEY\" > ~/.gem/credentials"
       - run: chmod 0600 ~/.gem/credentials"
         
