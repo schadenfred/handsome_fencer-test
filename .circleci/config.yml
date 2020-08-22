@@ -17,18 +17,6 @@ jobs:
       - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose run ruby_gem rake test
       - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose build ruby_gem
       - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose run ruby_gem rake test    
-  pre_release:
-    machine: true
-    steps:
-      - checkout
-      - run: gem install roro
-      - run: roro generate::exposed ci
-      - run: echo 'source roro/containers/ruby_image/ci.env' >> $BASH_ENV
-      - run: gem install gem-release
-      - run: "echo \"rubygems_api_key:: $RUBYGEMS_API_KEY\" > ~/.gem/credentials"
-      - run: printenv RUBYGEMS_API_KEY
-      - run: cat ~/.gem/credentials
-
       
   release:
     machine: true
@@ -38,11 +26,10 @@ jobs:
       - run: roro generate::exposed ci
       - run: echo 'source roro/containers/ruby_image/ci.env' >> $BASH_ENV
       - run: gem install gem-release
-      - run: "echo \"rubygems_api_key: $RUBYGEMS_API_KEY\" > ~/.gem/credentials"
       - run: printenv RUBYGEMS_API_KEY
-      - run: cat ~/.gem/credentials
-      - run: chmod 0600 ~/.gem/credentials
-      - run: gem release --key KEY
+      - run: chmod +x .circleci/setup-gem-credentials.sh
+      - run: .circleci/setup-gem-credentials.sh
+      - run: gem release -k
         
 workflows:
   version: 2
@@ -50,11 +37,9 @@ workflows:
   build-release: 
     jobs: 
       - build
-      - pre_release:
-          filters: 
-            branches: 
-              only: master    
       - release:
+          requires: 
+            - build 
           filters: 
             branches: 
               only: release
