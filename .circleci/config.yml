@@ -10,15 +10,15 @@ jobs:
     steps:
       - checkout
       - run: gem install roro
-      - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose build ruby_gem
-      - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose run ruby_gem rake test
-      - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose build ruby_gem
-      - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose run ruby_gem rake test
-      - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose build ruby_gem
-      - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose run ruby_gem rake test
+      # - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose build ruby_gem
+      # - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose run ruby_gem rake test
+      # - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose build ruby_gem
+      # - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose run ruby_gem rake test
+      # - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose build ruby_gem
+      # - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose run ruby_gem rake test
       - run: roro generate::exposed 
       - run: echo 'source roro/ci.env' >> $BASH_ENV
       - run: chmod +x setup_gem_credentials.sh
       - run: sh setup_gem_credentials.sh
       - run: gem install gem-release 
-      - run: gem release -k
+      - run: gem release --key 
