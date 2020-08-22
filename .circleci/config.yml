@@ -40,10 +40,15 @@ workflows:
     jobs: 
       - build
       - pre_release:
+          requires: 
+            - build
           filters: 
             branches: 
-              only: /master/    
+              only: master, release    
       - release:
+          requires: 
+            - build 
+            - pre_release 
           filters: 
             branches: 
-              only: /release/
+              only: release
