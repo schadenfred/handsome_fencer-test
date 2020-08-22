@@ -43,15 +43,15 @@ workflows:
     
   build-release: 
     jobs: 
-      - build
+      - build:
         filters: 
           branches: 
             only: 'development', 'master'
-      - pre-release
+      - pre-release:
         filters: 
           branches: 
             only: 'master'    
-      - release
+      - release:
         filters: 
           branches: 
             only: 'release'
