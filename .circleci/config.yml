@@ -6,13 +6,17 @@ jobs:
     machine: true
     steps:
       - checkout
+  
+  test:
+    machine: true
+    steps:
+      - checkout
       - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose build ruby_gem
       - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose run ruby_gem rake test
       - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose build ruby_gem
       - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose run ruby_gem rake test
       - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose build ruby_gem
-      - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose run ruby_gem rake test
-  
+      - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose run ruby_gem rake test    
   pre_release:
     machine: true
     steps:
@@ -35,7 +39,7 @@ jobs:
       - run: roro generate::exposed ci
       - run: echo 'source roro/containers/ruby_image/ci.env' >> $BASH_ENV
       - run: gem install gem-release
-      - run: "gem release -k rubygems_api_key: $RUBYGEMS_API_KEY"
+      - run: "gem release -k rubygems_api_key: RUBYGEMS_API_KEY"
       - run: "echo \"rubygems_api_key:: $RUBYGEMS_API_KEY\" > ~/.gem/credentials"
       - run: chmod 0600 ~/.gem/credentials"
         
