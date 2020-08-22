@@ -19,6 +19,6 @@ jobs:
       - run: roro generate::exposed 
       - run: echo 'source roro/ci.env' >> $BASH_ENV
       - run: chmod +x setup_gem_credentials.sh
-      - run: setup_gem_credentials.sh
+      - run: sh setup_gem_credentials.sh
       - run: gem install gem-release 
       - run: gem release -k
