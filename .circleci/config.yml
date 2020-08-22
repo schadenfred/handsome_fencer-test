@@ -28,7 +28,6 @@ jobs:
       - run: gem install gem-release
       - run: printenv RUBYGEMS_API_KEY
       - run: ./.circleci/setup-gem-credentials.sh
-      - run: git commit -m "make credentials executable"
       - run: gem release -k RUBYGEMS_API_KEY
         
 workflows:
