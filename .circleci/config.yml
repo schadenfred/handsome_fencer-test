@@ -1,0 +1,57 @@
+defaults: &defaults
+  working_directory: /tmp
+
+version: 2
+
+jobs:
+
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose build ruby_gem
+      - run: RUBY_IMAGE=ruby:2.5-alpine docker-compose run ruby_gem rake test
+      - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose build ruby_gem
+      - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose run ruby_gem rake test
+      - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose build ruby_gem
+      - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose run ruby_gem rake test
+  
+  pre-release:
+    machine: true
+    steps:
+      - checkout
+      - run: gem install roro
+      - run: roro generate::exposed ci
+      - run: echo 'source roro/containers/gem/ci.env' >> $BASH_ENV
+      - run: setup_gem_credentials.sh
+      - run: gem install gem-release
+      - run: printenv RUBYGEMS_API_KEY
+      
+  release:
+    machine: true
+    steps:
+      - checkout
+      - run: gem install roro
+      - run: roro generate::exposed ci
+      - run: echo 'source roro/containers/gem/ci.env' >> $BASH_ENV
+      - run: setup_gem_credentials.sh
+      - run: gem install gem-release
+      - run: gem release -k $RUBYGEMS_API_KEY
+      
+workflows:
+  version: 2
+    
+  build-release: 
+    jobs: 
+      - build
+        filters: 
+          branches: 
+            only: 'development', 'master'
+      - pre-release
+        filters: 
+          branches: 
+            only: 'master'    
+      - release
+        filters: 
+          branches: 
+            only: 'release'
