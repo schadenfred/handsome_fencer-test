@@ -1,7 +1,4 @@
-defaults: &defaults
-  working_directory: /tmp
-
-version: 2
+version: 2.1
 
 jobs:
 
@@ -37,7 +34,7 @@ jobs:
       - run: setup_gem_credentials.sh
       - run: gem install gem-release
       - run: gem release -k $RUBYGEMS_API_KEY
-      
+        
 workflows:
   version: 2
     
@@ -45,10 +42,10 @@ workflows:
     jobs: 
       - build
       - pre_release:
-        filters: 
-          branches: 
-            only: /master/    
+          filters: 
+            branches: 
+              only: /master/    
       - release:
-        filters: 
-          branches: 
-            only: /release/
+          filters: 
+            branches: 
+              only: /release/
