@@ -20,7 +20,6 @@ jobs:
       - run: gem install roro
       - run: roro generate::exposed ci
       - run: echo 'source roro/containers/ruby_image/ci.env' >> $BASH_ENV
-      - run: setup_gem_credentials.sh
       - run: gem install gem-release
       - run: printenv RUBYGEMS_API_KEY
       
@@ -31,7 +30,6 @@ jobs:
       - run: gem install roro
       - run: roro generate::exposed ci
       - run: echo 'source roro/containers/ruby_image/ci.env' >> $BASH_ENV
-      - run: setup_gem_credentials.sh
       - run: gem install gem-release
       - run: gem release -k $RUBYGEMS_API_KEY
         
