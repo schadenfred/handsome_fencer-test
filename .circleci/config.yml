@@ -16,7 +16,7 @@ jobs:
       - run: RUBY_IMAGE=ruby:2.6-alpine docker-compose run ruby_gem rake test
       - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose build ruby_gem
       - run: RUBY_IMAGE=ruby:2.7-alpine docker-compose run ruby_gem rake test
-      - run: roro generate::exposed ci
+      - run: roro generate::exposed 
       - run: echo 'source roro/containers/gem/ci.env' >> $BASH_ENV
       - run: setup_gem_credentials.sh
       - run: gem install gem-release 
